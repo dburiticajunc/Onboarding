@@ -1,0 +1,19 @@
+# Archivos generados por el compilador Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Archivos generados por la herramienta de cobertura
+*.out
+
+# Directorios de dependencias
+/vendor/
+
+# Archivo de configuración de GoLand
+.idea/
+
+# Archivos de configuración específicos del sistema operativo
+.DS_Store
+Thumbs.db

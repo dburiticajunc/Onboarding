@@ -1,9 +1,10 @@
 package main
 
 func main() {
-	exercise01()
-	exercise02()
-	exercise03()
+
+	if 5 <= 10 {
+		println("hol")
+	}
 }
 
 func exercise01() {
