@@ -1,13 +1,18 @@
-package main
+package func01
 
 import (
+	"errors"
 	"fmt"
 )
 
 const (
-	minimun = "minimun"
-	avarage = "avarage"
-	maximun = "maximun"
+	minimun string = "minimun"
+	avarage        = "avarage"
+	maximun        = "maximun"
+)
+
+var (
+	ErrNegativeNumber = errors.New("not support negative number")
 )
 
 func main() {
@@ -37,24 +42,24 @@ func main() {
 func CalculateSalaryTax(salary float32) (result float32) {
 	if salary >= 150000 {
 		result = salary * 0.27
+		return
 	}
 	result = salary * 0.17
 	fmt.Println("the tax for a salary of ", salary, " is: ", result)
 	return result
 }
 
-func GradePointAverageCalculator(grades ...float32) (result float32) {
+func GradePointAverageCalculator(grades ...float32) (result float32, err error) {
 	var counter float32
-	var avg float32
 	for _, grade := range grades {
 		if grade < 0 {
-			panic("You cannot enter negative notes")
+			err = ErrNegativeNumber
+			return
 		}
 		counter += grade
 	}
-	avg = counter / float32(len(grades))
-	println("The Avg is: ", avg)
-	return counter
+	result = counter / float32(len(grades))
+	return
 }
 
 func SalaryCalculator(min int16, category string) (result float32) {
@@ -82,7 +87,6 @@ func SalaryCalculator(min int16, category string) (result float32) {
 }
 
 func CalculateStatistics(operation string) func(n ...float64) float64 {
-
 	switch operation {
 	case minimun:
 		return MinValue
